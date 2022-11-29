@@ -2,19 +2,27 @@
 
 let gridSize = 62;
 
-let mouseDown = false
+// Alternate
+
+let mouseDown = false;
 document.body.onmousedown = () => {
-    (mouseDown = true)
-    console.log("mouse down")
+    mouseDown = true
+    // console.log("mouse down")
 }
 document.body.onmouseup = () => {
-    (mouseDown = false)
-    console.log("mouse up")
+    mouseDown = false
+    // console.log("mouse up")
 }
 
 function changeColor(e) {
-    if (e.type === 'mouseover' && !mouseDown) return
-    e.target.style.backgroundColor = "black";
+    // if (e.type === 'mouseover' && !mouseDown) return
+    // e.target.style.backgroundColor = "black";
+
+    if (e.type === 'mouseover' && mouseDown) {
+        console.log(e.type)
+        console.log(mouseDown)
+        e.target.style.backgroundColor = "black";
+    }
 }
 
 const gridBox = document.querySelector(".grid-box")
@@ -27,6 +35,7 @@ function drawGrid(size) {
         const grid = document.createElement("div");
         grid.addEventListener("mouseover", changeColor)
         grid.addEventListener("mousedown", changeColor)
+
         grid.classList.add("grid");
         gridBox.appendChild(grid);
     }
@@ -44,3 +53,9 @@ window.onload = () => {
     drawGrid(gridSize)
 }
 
+
+// 
+
+function print() {
+    console.log("Click")
+}
